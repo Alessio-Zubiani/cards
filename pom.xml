@@ -21,6 +21,7 @@
 	
 	<properties>
 		<java.version>11</java.version>
+		<spring-cloud.version>2021.0.8</spring-cloud.version>
 	</properties>
 	
 	<dependencies>
@@ -41,8 +42,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<!--<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>-->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -62,6 +71,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -83,7 +104,7 @@
 		        <version>3.4.0</version>
 		        <configuration>
 		          	<to>
-		            	<image>alessiozubiani1996/${project.artifactId}:s4</image>
+		            	<image>alessiozubiani1996/${project.artifactId}:s7</image>
 		          	</to>
 		        </configuration>
 	      	</plugin>
